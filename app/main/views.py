@@ -57,3 +57,18 @@ def all_news(per_page):
         return redirect(url_for('main.search', topic = search_articles))
     else:
         return render_template('everything.html', title = title, name = 'All News', news = everything_news)
+
+
+@main.route('/search/<topic>')
+def search(topic):
+    '''
+    function that returns the results of search request
+    '''
+    limit = 40
+    search_name = topic.split(" ")
+    search_name_format = "+".join(search_name)
+    search_every = search_everything(limit,search_name_format)
+
+    title = '{search_name_format} Results'
+
+    return render_template('search.html',title=title,news = search_every)
