@@ -56,3 +56,22 @@ def process_results(sources_list):
             sources_results.append(source_object)
 
     return sources_results
+
+
+def get_articles(source_id, limit):
+    '''
+    Function that gets articles based on the source id
+    '''
+    get_article_location_url = articles_url.format(source_id, limit, api_key)
+
+    with urllib.request.urlopen(get_article_location_url) as url:
+        articles_location_data = url.read()
+        articles_location_response = json.loads(articles_location_data)
+
+        articles_location_results = None
+
+        if articles_location_response['articles']:
+            articles_location_results = process_articles(articles_location_response['articles'])
+
+            return articles_location_results
+            
