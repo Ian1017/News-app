@@ -74,4 +74,26 @@ def get_articles(source_id, limit):
             articles_location_results = process_articles(articles_location_response['articles'])
 
             return articles_location_results
-            
+
+
+def process_articles(my_articles):
+    '''
+    Function that process the json results for the articles
+    '''
+    article_location_list = []
+
+    for article in my_articles:
+        author = article.get('author')
+        title = article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        urlToImage = article.get('urlToImage')
+        date_published = article.get('publishedAt')
+
+        publishedAt = datetime(year=int(date_published[0:4]), month=int(date_published[5:7]), day=int(date_published[8:10]), hour=int(date_published[11:13]), minute=int(date_published[14:16]))
+
+        if urlToImage:
+            article_source_object = Articles(author, title, description, url, urlToImage, publishedAt)
+            article_location_list.append(article_source_object)
+
+    return article_location_list
