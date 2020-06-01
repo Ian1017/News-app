@@ -97,3 +97,21 @@ def process_articles(my_articles):
             article_location_list.append(article_source_object)
 
     return article_location_list
+
+
+def topheadlines(limit):
+    '''
+    Function that gets articles based on the source id
+    '''
+    get_topheadlines_url = topheadlines.url.format(limit, api_key)
+
+    with urllib.request.urlopen(get_topheadlines_url) as url:
+        topheadlines_data = url.read()
+        topheadlines_response = json.loads(topheadlines_data)
+
+        topheadlines_results = None
+
+        if topheadlines_response['articles']:
+            topheadlines_results = process_articles(topheadlines_response['articles'])
+
+    return topheadlines_results
