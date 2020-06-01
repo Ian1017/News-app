@@ -35,4 +35,24 @@ def get_sources(category):
             sources_results = process_results(get_sources_response['sources'])
 
             return sources_results
-            
+
+
+def process_results(sources_list):
+    '''
+    Function that process our json results
+    '''
+    sources_results = []
+
+    for source in sources_list:
+        id = source.get('id')
+        name = source.get('name')
+        description = source.get('description')
+        url = source.get('url')
+        category = source.get('category')
+        country = source.get('country')
+
+        if url:
+            source_object = Sources(id, name, description, url, category, country)
+            sources_results.append(source_object)
+
+    return sources_results
