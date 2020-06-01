@@ -23,4 +23,4 @@ class SourcesTest(unittest.TestCase):
         self.assertEquals(self.new_source.description, 'We have the latest updates')
         self.assertEquals(self.new_source.url, 'https://bing.com')
         self.assertEquals(self.new_source.category, 'general')
-        self.assertEquals(self.new_source.country, 'us') 
+        self.assertEquals(self.new_source.country, 'us')

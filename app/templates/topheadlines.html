@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <h1> {{name}} </h1>
+    <div class="row mt">
+        <div class="col-md-12 text-center">
+            <h2> {{name|upper}} </h2>
         </div>
     </div>
     <div class="row">
         {% for article in news %}
-        <div class="col-md-3">
+        <div class="col-md-3 margin">
             <a href="{{article.url}}" target="_blank">
-                <img src="{{article.urlToImage}}" alt="Image Loading...">
+                <img class="img-responsive size" src="{{article.urlToImage}}" alt="Image Loading...">
             </a>
             <div>
-                <h4 class="text-bold"> {{article.title}} </h4>
+                <h4 class="text-bold"> {{article.title|truncate(60)}} </h4>
                 <p class="small"> {{article.author}} </p>
                 <p class="small">Posted on {{article.publishedAt}} </p>
                 <hr>
-                <p> {{article.description}}...
+                <p> {{article.description|truncate(100)}}...
                     <a href="{{article.url}}" target="_blank">Read More</a>
                 </p>
             </div>
@@ -25,4 +25,4 @@
         {% endfor %}
     </div>
 </div>
-{% endblock%} 
+{% endblock%}
