@@ -115,3 +115,39 @@ def topheadlines(limit):
             topheadlines_results = process_articles(topheadlines_response['articles'])
 
     return topheadlines_results
+
+
+def everything(limit):
+    '''
+    Function that gets articles based on the source id
+    '''
+    get_everything_url = everything_url.format(limit, api_key)
+
+    with urllib.request.urlopen(get_everything_url) as url:
+        everything_data = url.read()
+        everything_response = json.loads(everything_data)
+
+        everything_results = None
+
+        if everything_response['articles']:
+            everything_results = process_articles(everything_response['articles'])
+
+    return everything_results
+
+
+def search_everything(limit, query):
+    '''
+    Function that looks for articles based on topheadlines
+    '''
+    search_everything_url = everything_search_url.format(query, limit, api_key)
+
+    with urllib.request.urlopen(search_everything_url) as url:
+        search_everything_data = url.read()
+        search_everything_response = json.loads(search_everything_data)
+
+        search_everything_results = []
+
+        if search_everything_response['articles']:
+            search_everything_results = process_articles(search_everything_response['articles'])
+
+    return search_everything_results
