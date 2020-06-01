@@ -1,0 +1,61 @@
+{% import 'macros.html' as macro %}
+
+{% block content%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 heading">
+            <h1>News Highlights</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>General News</h2>
+        </div>
+        {{macro.sourceCategories(general)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Business News</h2>
+        </div>
+        {{macro.sourceCategories(business)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Technology News</h2>
+        </div>
+        {{macro.sourceCategories(tech)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Entertainment News</h2>
+        </div>
+        {{macro.sourceCategories(entertainment)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sports News</h2>
+        </div>
+        {{macro.sourceCategories(sports)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Science News</h2>
+        </div>
+        {{macro.sourceCategories(science)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Health News</h2>
+        </div>
+        {{macro.sourceCategories(health)}}
+    </div>
+</div>
+
+{% endblock%} 
