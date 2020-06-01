@@ -21,7 +21,7 @@ def index():
     return render_template('index.html', title = title, general = general_category, business = business_category, entertainment = entertainment_category, sports = sports_category,tech = technology_category, science = science_category, health = health_category) 
 
 
-@main.route('/articles/<source_id>&<int:per_page')
+@main.route('/articles/<source_id>&<int:per_page>')
 def articles(source_id, per_page):
     '''
     Function that returns articles based on their sources
@@ -43,7 +43,7 @@ def headlines(per_page):
     return render_template('topheadlines.html', title = title, name = 'Top Headlines', news = topheadlines_news)
 
 
-@main.route('/everything&<int:per_page')
+@main.route('/everything&<int:per_page>')
 def all_news(per_page):
     '''
     Functiom that returns top headlines articles
